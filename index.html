@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UT LECTOR - Lector RSS Real</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen" id="app-container">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 text-white w-64 flex flex-col overflow-hidden">
+            <div class="p-4 flex items-center border-b border-gray-700">
+                <i class="fas fa-newspaper text-xl mr-3 text-blue-400"></i>
+                <span class="font-bold text-lg">UT LECTOR</span>
+            </div>
+
+            <!-- Add Feed Form -->
+            <div class="p-4 border-b border-gray-700">
+                <div class="mb-4">
+                    <input type="text" id="feed-url" placeholder="URL del feed RSS" class="w-full bg-gray-700 text-white px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <button id="add-feed-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded flex items-center justify-center">
+                    <i class="fas fa-plus mr-2"></i>
+                    <span>Añadir fuente</span>
+                </button>
+            </div>
+
+            <!-- Categories -->
+            <div class="px-4 py-3 border-b border-gray-700">
+                <h3 class="text-gray-400 uppercase text-xs font-bold mb-2">CATEGORÍAS</h3>
+                <ul>
+                    <li class="feed-category py-2 px-2 flex items-center rounded hover:bg-gray-700 cursor-pointer text-blue-300" data-category="all">
+                        <i class="fas fa-inbox w-5 mr-3"></i>
+                        <span>Todos</span>
+                    </li>
+                    <li class="feed-category py-2 px-2 flex items-center rounded hover:bg-gray-700 cursor-pointer" data-category="unread">
+                        <i class="fas fa-envelope w-5 mr-3"></i>
+                        <span>No leídos</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Feeds List -->
+            <div class="flex-grow overflow-y-auto">
+                <h3 class="text-gray-400 uppercase text-xs font-bold px-4 py-2">SUSCRIPCIONES</h3>
+                <ul id="feed-list" class="mb-4">
+                    <!-- Feeds will be loaded here -->
+                </ul>
+            </div>
+
+            <div class="p-4 border-t border-gray-700 text-xs text-gray-400">
+                <p>Total suscripciones: <span id="feed-count">0</span></p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Toolbar -->
+            <div class="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <button id="mark-all-read" class="text-gray-600 hover:text-gray-900 mr-4">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="ml-1">Marcar todo como leído</span>
+                    </button>
+                    <button id="refresh-feeds" class="text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-sync-alt"></i>
+                        <span class="ml-1">Actualizar</span>
+                    </button>
+                </div>
+                <div class="flex items-center">
+                    <input type="text" id="article-search" placeholder="Buscar artículos..." class="border border-gray-300 rounded px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex flex-1 overflow-hidden">
+                <!-- Article List -->
+                <div class="w-96 border-r border-gray-200 bg-white overflow-y-auto">
+                    <div id="feed-header" class="p-4 border-b border-gray-200">
+                        <h2 class="font-semibold text-lg">Selecciona un feed</h2>
+                        <p class="text-sm text-gray-500">Selecciona una fuente de la izquierda</p>
+                    </div>
+                    <div id="article-list" class="divide-y divide-gray-200">
+                        <!-- Articles will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Article Content -->
+                <div class="flex-1 overflow-y-auto bg-gray-50">
+                    <div id="article-content" class="p-8">
+                        <div class="max-w-3xl mx-auto">
+                            <div class="text-center mb-8">
+                                <h1 id="article-title" class="text-3xl font-bold mb-2">Bienvenido a UT LECTOR</h1>
+                                <div class="text-gray-500">
+                                    <span id="article-source"></span>
+                                    <span id="article-date" class="ml-4"></span>
+                                </div>
+                            </div>
+                            <div id="article-image" class="mb-6 rounded-lg overflow-hidden">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/23638e49-c71d-4431-a37f-29e2d809c54c.png" alt="Lector de noticias RSS con interfaz moderna mostrando artículos organizados" class="w-full h-auto">
+                            </div>
+                            <div id="article-text" class="prose max-w-none">
+                                <p>No hay fuentes suscritas actualmente.</p>
+                                <p class="mt-2">Utiliza el formulario en la barra lateral para añadir tus fuentes RSS favoritas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

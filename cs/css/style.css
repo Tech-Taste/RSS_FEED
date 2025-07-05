@@ -1,0 +1,14 @@
+.article-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.article-content.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.read-article {
+    opacity: 0.7;
+}
